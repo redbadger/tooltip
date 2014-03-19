@@ -1,0 +1,20 @@
+{
+  "name": "tooltip",
+  "repo": "redbadger/tooltip",
+  "description": "Tooltips for DOM elements",
+  "version": "0.0.1",
+  "keywords": [
+    "tooltip"
+  ],
+  "dependencies": {
+    "component/dom": "*"
+  },
+  "development": {},
+  "license": "MIT",
+  "scripts": [
+    "index.js"
+  ],
+  "styles": [
+    "main.css"
+  ]
+}

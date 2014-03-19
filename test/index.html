@@ -1,0 +1,24 @@
+<!DOCTYPE 5>
+<html>
+  <head>
+    <title>Tooltip component</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <style>
+    </style>
+  </head>
+  <body>
+    <h1>Test form</h1>
+    <p>
+      <input placeholder="Email" type="email" id="email">
+    </p>
+    <p>
+      <input placeholder="Password" type="password" id="password">
+    </p>
+    <script src="../build/build.js"></script>
+    <script>
+      var Collapsible = require('tooltip');
+      cc1 = Collapsible('#email', 'Error in email', 'error', 'bottom', false, 2000);
+      //cc2 = Collapsible('#password', 'Error in email', 'info', 'top');
+    </script>
+  </body>
+</html>
