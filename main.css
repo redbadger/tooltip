@@ -2,7 +2,42 @@
   opacity: 0;
 }
 
+.fadein {
+  opacity: 1;
+}
+
 .tooltip {
-  background-color: #333;
+  background-color: #eee;
   transition: opacity 0.3s ease;
+  padding: 10px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.tooltip .tip {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.tooltip .tip.top {
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid black;
+  left: 50%;
+  top: -10px;
+}
+
+.tooltip .tip.bottom {
+
+}
+
+.tooltip.error {
+  background-color: #ee1c2e;
+  color: white;
+}
+
+.tooltip.error-2 {
+  background-color: #f8e1e3;
+  color: #ee1c2e;
 }

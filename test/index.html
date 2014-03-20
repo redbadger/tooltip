@@ -3,8 +3,8 @@
   <head>
     <title>Tooltip component</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <style>
-    </style>
+    <link href="../build/build.css" rel="stylesheet" type="text/css" media="all">
+    <style src="../build/build.css"></style>
   </head>
   <body>
     <h1>Test form</h1>
@@ -14,11 +14,40 @@
     <p>
       <input placeholder="Password" type="password" id="password">
     </p>
+    <p>
+      <input placeholder="Tooltip top" type="email" id="tooltip-top">
+    </p>
+    <p>
+      <input placeholder="Tooltip bottom" type="email" id="tooltip-bottom">
+    </p>
+    <p>
+      <input placeholder="Tooltip overlay" type="email" id="tooltip-overlay">
+    </p>
     <script src="../build/build.js"></script>
+
     <script>
-      var Collapsible = require('tooltip');
-      cc1 = Collapsible('#email', 'Error in email', 'error', 'bottom', false, 2000);
-      //cc2 = Collapsible('#password', 'Error in email', 'info', 'top');
+      var Tooltip = require('tooltip');
+      var params = {
+        target: '#email',
+        content: 'Error in email!',
+        type: 'error',
+        position: 'top',
+        overlay: false
+      }
+      var cc1 = Tooltip(params);
+      cc1.show();
+
+      var params2 = {
+        target: '#tooltip-bottom',
+        content: 'For your information',
+        type: 'info',
+        position: 'bottom',
+        overlay: false,
+        timeout: 5000
+      }
+      var cc2 = Tooltip(params2);
+      cc2.show();
+
     </script>
   </body>
 </html>

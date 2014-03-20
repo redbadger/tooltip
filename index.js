@@ -1,26 +1,61 @@
 var dom = require('dom');
 
-module.exports = function(target, content, type, position, overlay, timeout) {
-  console.log(target);
-  var el = dom(target)[0];
+/*
+* Params list: target, content, type, position, overlay, timeout
+*/
+function Tooltip(params) {
+  console.log(params.target);
+  var el = dom(params.target)[0];
 
   var tooltip = document.createElement('div');
   tooltip.classList.add('tooltip');
-  tooltip.classList.add(type);
-  tooltip.innerHTML = content;
-  if(overlay) {
+  tooltip.classList.add(params.type);
+  tooltip.innerHTML = params.content;
 
-  }
-  else {
-    dom(tooltip).insertAfter(el);
+  var tip = document.createElement('div');
+  tip.className = 'tip';
+  tooltip.appendChild(tip);
+
+  var tipHeight = tooltip.offsetHeight;
+
+
+  var show = function() {
+    if(this.overlay) {
+      console.log('Params overlay true');
+    }
+    else {
+      if(this.position == 'top') {
+        var parentEl = this.el.parentNode;
+        parentEl.insertBefore(tooltip, this.el);
+      } else {
+        dom(this.tooltip).insertAfter(this.el);
+      }
+      dom(this.tooltip).addClass('fadein');
+    }
+
+    if(typeof params.timeout !== 'undefined') {
+      console.log('Params timeout: ' + params.timeout);
+      window.setTimeout(hide, params.timeout);
+    }
   }
 
-  if(typeof timeout !== 'undefined') {
+  var hide = function() {
+    console.log('Tooltip: ' + tooltip.innerHTML);
+    dom(tooltip).addClass('fadeout');
     window.setTimeout(function(){
-      dom(tooltip).addClass('fadeout');
-      window.setTimeout(function(){
-        dom(tooltip).remove();
-      }, 300);
-    }, timeout);
+      dom(tooltip).remove();
+    }, 300);
   }
+
+  return {
+    hide: hide,
+    show: show,
+    tooltip: tooltip,
+    el: el,
+    overlay: params.overlay,
+    position: params.position,
+    tipHeight: tipHeight
+  };
 }
+
+module.exports = Tooltip;
