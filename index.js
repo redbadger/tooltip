@@ -12,35 +12,44 @@ function Tooltip(params) {
   tooltip.classList.add(params.type);
   tooltip.innerHTML = params.content;
 
-  var tip = document.createElement('div');
-  tip.className = 'tip';
-  tooltip.appendChild(tip);
+  // Create tip
 
-  var tipHeight = tooltip.offsetHeight;
+  if(typeof params.tip !== 'undefined' && params.tip != false) {
+    var tip = document.createElement('div');
+    tip.className = 'tip';
+    tooltip.appendChild(tip);
+
+    var tipHeight = tooltip.offsetHeight;
+  }
 
 
   var show = function() {
-    if(this.overlay) {
-      console.log('Params overlay true');
-    }
-    else {
-      if(this.position == 'top') {
-        var parentEl = this.el.parentNode;
-        parentEl.insertBefore(tooltip, this.el);
-      } else {
-        dom(this.tooltip).insertAfter(this.el);
-      }
-      dom(this.tooltip).addClass('fadein');
+    if(this.position == 'top') {
+      dom(tip).addClass('top');
+      var parentEl = this.el.parentNode;
+      parentEl.insertBefore(tooltip, this.el);
+      tooltip.style.top = '-5px';
+      tip.style.top = tooltip.offsetHeight;
+    } else {
+      dom(tip).addClass('bottom');
+      tip.style.top = '-5px';
+      tooltip.style.top = '5px';
+      dom(this.tooltip).insertAfter(this.el);
     }
 
+    if(this.overlay) {
+      console.log('Params overlay true');
+      dom(tooltip).addClass('overlay');
+    }
+
+    dom(this.tooltip).addClass('fadein');
+
     if(typeof params.timeout !== 'undefined') {
-      console.log('Params timeout: ' + params.timeout);
       window.setTimeout(hide, params.timeout);
     }
   }
 
   var hide = function() {
-    console.log('Tooltip: ' + tooltip.innerHTML);
     dom(tooltip).addClass('fadeout');
     window.setTimeout(function(){
       dom(tooltip).remove();

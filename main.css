@@ -8,10 +8,18 @@
 
 .tooltip {
   background-color: #eee;
+  border-color: #eee;
   transition: opacity 0.3s ease;
   padding: 10px;
   border-radius: 5px;
   position: relative;
+}
+
+.tooltip.overlay {
+  position: absolute;
+  width: 95%;
+  -webkit-box-shadow: 0 0 2px 2px rgba(0,0,0,0.2);
+  box-shadow: 0 0 2px 2px rgba(0,0,0,0.2);
 }
 
 .tooltip .tip {
@@ -21,23 +29,30 @@
 }
 
 .tooltip .tip.top {
+  border-top: 5px solid;
+  border-top-color: inherit;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
-  border-bottom: 10px solid black;
   left: 50%;
-  top: -10px;
 }
 
 .tooltip .tip.bottom {
-
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 5px solid;
+  border-bottom-color: inherit;
+  left: 50%;
+  top: -5px;
 }
 
 .tooltip.error {
   background-color: #ee1c2e;
+  border-color: #ee1c2e;
   color: white;
 }
 
 .tooltip.error-2 {
   background-color: #f8e1e3;
+  border-color: #f8e1e3;;
   color: #ee1c2e;
 }
