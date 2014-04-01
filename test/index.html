@@ -14,19 +14,22 @@
   <body>
     <h1>Test form</h1>
     <p>
-      <input placeholder="Email" type="email" id="email">
+      <input placeholder="Error on top" type="email" id="email">
     </p>
     <p>
-      <input placeholder="Password" type="password" id="password">
+      <input placeholder="Error on bottom" type="password" id="password">
     </p>
     <p>
-      <input placeholder="Tooltip top" type="email" id="tooltip-top">
+      <input placeholder="Info with no tip" type="email" id="tooltip-top">
     </p>
     <p>
-      <input placeholder="Tooltip bottom" type="email" id="tooltip-bottom">
+      <input placeholder="Top overlay with timeout" type="email" id="tooltip-overlay-top">
     </p>
     <p>
-      <input placeholder="Tooltip overlay" type="email" id="tooltip-overlay">
+      <input placeholder="Bottom overlay with timeout" type="email" id="tooltip-overlay-bottom">
+    </p>
+    <p>
+      <input placeholder="Tooltip info with no tip" type="email" id="tooltip-no-tip">
     </p>
     <script src="../build/build.js"></script>
 
@@ -37,21 +40,58 @@
         content: 'Error in email!',
         type: 'error',
         position: 'top',
-        tip: true
+        tip: true,
+        tipPosition: 'left'
       }
       var cc1 = Tooltip(params);
       cc1.show();
 
       var params2 = {
-        target: '#tooltip-bottom',
+        target: '#tooltip-overlay-top',
         content: 'For your information',
         type: 'info',
-        position: 'bottom',
+        position: 'top',
         tip: true,
-        overlay: true
+        tipPosition: 'right',
+        overlay: true,
+        timeout: 5000
       }
       var cc2 = Tooltip(params2);
       cc2.show();
+
+      var params3 = {
+        target: '#password',
+        content: 'Error with password',
+        type: 'error',
+        position: 'bottom',
+        tip: true,
+        tipPosition: 'middle'
+      }
+      var cc3 = Tooltip(params3);
+      cc3.show();
+
+      var params4 = {
+        target: '#tooltip-no-tip',
+        content: 'For your information',
+        type: 'info',
+        position: 'bottom',
+        tip: false
+      }
+      var cc4 = Tooltip(params4);
+      cc4.show();
+
+      var params5 = {
+        target: '#tooltip-overlay-bottom',
+        content: 'Error type 2',
+        type: 'error-2',
+        position: 'bottom',
+        tip: true,
+        tipPosition: 'right',
+        overlay: true,
+        timeout: 5000
+      }
+      var cc5 = Tooltip(params5);
+      cc5.show();
 
     </script>
   </body>
