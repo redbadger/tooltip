@@ -5,7 +5,6 @@ var dom = require('dom');
 */
 
 function Tooltip(params) {
-  console.log(params.target);
   var el = dom(params.target)[0];
 
   var tooltip = document.createElement('div');
@@ -59,7 +58,7 @@ function Tooltip(params) {
 
     } else {
       tooltip.style.top = '2px';
-      dom(this.tooltip).insertAfter(this.el);
+      dom(tooltip).insertAfter(el);
       if(typeof tip !== 'undefined') {
         dom(tip).addClass('bottom');
         tip.style.top = '-10px';
@@ -88,9 +87,14 @@ function Tooltip(params) {
     }, 300);
   }
 
+  var toggle = function() {
+    dom(this.tooltip).hasClass('tooltip-fadein') ? this.hide() : this.show();
+  }
+
   return {
     hide: hide,
     show: show,
+    toggle: toggle,
     tooltip: tooltip,
     el: el,
     overlay: params.overlay,
