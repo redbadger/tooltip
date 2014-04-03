@@ -28,7 +28,7 @@ function Tooltip(params) {
         tip.style.left = '50%';
         break;
       case 'right':
-        tip.style.left = '97%';
+        tip.style.left = '93%';
         break;
       default:
         tip.style.left = '50%';
@@ -44,7 +44,7 @@ function Tooltip(params) {
     if(this.position == 'top') {
       var parentEl = this.el.parentNode;
       parentEl.insertBefore(tooltip, this.el);
-      tooltip.style.top = '-5px';
+      tooltip.style.top = '-2px';
       if(typeof tip !== 'undefined') {
         dom(tip).addClass('top');
         tip.style.top = tooltip.offsetHeight;
@@ -58,11 +58,11 @@ function Tooltip(params) {
       }
 
     } else {
-      tooltip.style.top = '5px';
+      tooltip.style.top = '2px';
       dom(this.tooltip).insertAfter(this.el);
       if(typeof tip !== 'undefined') {
         dom(tip).addClass('bottom');
-        tip.style.top = '-5px';
+        tip.style.top = '-10px';
       }
 
       if(this.overlay) {
