@@ -1,8 +1,8 @@
-.fadeout {
+.tooltip-fadeout {
   opacity: 0;
 }
 
-.fadein {
+.tooltip-fadein {
   opacity: 1;
 }
 
@@ -19,7 +19,7 @@
   transition: all 0.3s ease;
 }
 
-.tooltip.overlay {
+.tooltip-overlay {
   position: absolute;
   width: 90%;
   z-index: 100;

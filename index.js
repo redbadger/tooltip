@@ -53,7 +53,7 @@ function Tooltip(params) {
       if(this.overlay) {
         // Calculating absolute position of the overlayed tooltip
         var offsetTop = this.el.offsetTop - this.tooltip.offsetHeight - 5;
-        dom(this.tooltip).addClass('overlay');
+        dom(this.tooltip).addClass('tooltip-overlay');
         dom(this.tooltip).css('top', offsetTop);
       }
 
@@ -68,12 +68,12 @@ function Tooltip(params) {
       if(this.overlay) {
         // Calculating absolute position of the overlayed tooltip
         var offsetTop = this.el.offsetTop + this.el.offsetHeight + 5;
-        dom(this.tooltip).addClass('overlay');
+        dom(this.tooltip).addClass('tooltip-overlay');
         dom(this.tooltip).css('top', offsetTop);
       }
     }
 
-    dom(this.tooltip).addClass('fadein');
+    dom(this.tooltip).addClass('tooltip-fadein');
 
     if(typeof params.timeout !== 'undefined') {
       window.setTimeout(hide, params.timeout);
@@ -81,8 +81,8 @@ function Tooltip(params) {
   }
 
   var hide = function() {
-    dom(tooltip).addClass('fadeout');
-    dom(tooltip).removeClass('fadein');
+    dom(tooltip).addClass('tooltip-fadeout');
+    dom(tooltip).removeClass('tooltip-fadein');
     window.setTimeout(function(){
       dom(tooltip).remove();
     }, 300);
